@@ -1,8 +1,8 @@
 body {
     background-image: url(../img/bg.jpg);
     background-size: cover;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
     color: whitesmoke;
 }
 
@@ -11,8 +11,9 @@ body {
 }
 .logo {
     display: inline-block;
-    width: 20%;
+    width: 15%;
     margin-left: 10%;
+    height: 120px;
     
 }
 .logo img {
@@ -22,21 +23,21 @@ body {
 
 .content_circle {
     display: inline-block;  
-    background-color: aqua;
-    width: 11%;
+    border: 25px solid #00ffff;
+    width: 8%;
+    padding: 40px 0.8%;
     text-align: center;
-    box-sizing: border-box;
-    padding: 50px 2%;
     border-radius: 50%;
-    margin: 0 10% 0 47.2%;
+    margin: 0 10% 0 50%;
 }
 
 .content_circle h2 {
-    font-size: 2.7em;
+    font-size: 3.8em;
+    font-family: 'Outfit', sans-serif;
 }
 
 .content_circle p {
-    font-size: 0.5em;
+    font-size: 1.2em;
     text-transform: uppercase;
 }
 
@@ -46,17 +47,18 @@ body {
 }
 
 .question_text {
-    font-size: 2.8em;
+    font-size: 4.5em;
     width: 60%;
     margin: 60px auto;
+    font-family: 'Outfit', sans-serif;
 }
 
 form button {
-    width: 45%;
+    width: 40%;
     background-color: #262951;
-    padding: 15px 0;
+    padding: 25px 0;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 2.3em;
     margin: 15px 2%;
     border-radius: 55px;
     border: 3px outset;
@@ -65,8 +67,6 @@ form button {
 form button:hover {
     background: rgb(131,21,21);
     background: linear-gradient(180deg, rgba(131,21,21,1) 0%, rgba(144,0,128,1) 100%); 
-    /* border: 3px outset rgb(131,21,21);
-    border: 3px outset linear-gradient(180deg, rgba(131,21,21,1) 0%, rgba(144,0,128,1) 100%);  */
 }
 
 .numerazione_pagina {
@@ -77,6 +77,8 @@ form button:hover {
 
 .numerazione_pagina h3 {
     margin-top: 180px;
+    font-size: 2em;
+    font-family: 'Outfit', sans-serif;
 }
 
 .totale_pagina {
