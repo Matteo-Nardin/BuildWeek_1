@@ -8,6 +8,7 @@
 body {
     background-image: url(../img/bg.jpg);
     background-size: cover;
+    background-attachment: fixed;
     margin: 0 auto;
     user-select: none;
 }
@@ -86,4 +87,5 @@ main button {
     color: #0b113b;
     font-weight: bold;
     background-color: #00ffff;
+    filter: drop-shadow(0 0 1.2rem #00ffff);
 }
