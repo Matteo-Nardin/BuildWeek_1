@@ -1,4 +1,4 @@
-let procedi = () => {
+let procedi = () => { 
     let btn = document.querySelector("#btnPr"); //btnPr = pulsante procedi
     let checkbox = document.querySelector("#accetto");
 

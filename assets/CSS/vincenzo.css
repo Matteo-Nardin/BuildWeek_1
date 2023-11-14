@@ -24,7 +24,8 @@ body {
 /* Header */
 
 picture img {
-    width: 17em;
+    width: 100%; 
+    max-width: 17em;
     padding: 3em;
     margin-left: 4em;
 }
@@ -66,7 +67,11 @@ main ul {
 }
 
 #istruzioni {
-    width: 80em;
+    width: 80%;
+}
+
+#is {
+    width: 75%;
 }
 
 b {
