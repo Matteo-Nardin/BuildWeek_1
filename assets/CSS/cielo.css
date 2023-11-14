@@ -56,27 +56,37 @@ section{
     display: inline-block;
     text-align: left;
 }
-#correct h2{
+#wrong{
+    display: inline-block;
+    text-align: right;
+}
+h2{
     font-size: 3em;
 }
-#correct .percent{
+
+.percent{
     font-family: 'Outfit', sans-serif;
     font-weight: 600;
     font-size: 3em;
 }
+.questions{
+    font-family: 'Outfit', sans-serif;
+}
 
 #circle{
-    margin: 2em;
+    margin: 2em 5em;
     display: inline-block;
     border: 2.5em solid white;
     border-radius: 50%;
     height: 12em;
     width: 12em;
-    padding: 2em;
+    padding: 1.3em;
+    box-shadow: 0.2em 0.2em 2em rgba(0, 0, 0, 0.533), -0.2em -0.2em 2em rgba(0, 0, 0, 0.533), 0.2em 0.2em 2em rgba(0, 0, 0, 0.533) inset, -0.2em -0.2em 2em rgba(0, 0, 0, 0.533) inset;
 }
 #congrat{
     margin: 1.5em 0;
     box-sizing: content-box;
+    line-height: 1.3;
 }
 #congrat p{
     font-weight: 600;
@@ -89,19 +99,7 @@ section{
     line-height: 1.3;
 }
 
-#wrong{
 
-    display: inline-block;
-    text-align: right;
-}
-#wrong h2{
-    font-size: 3em;
-}
-#wrong .percent{
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    font-size: 3em;
-}
 
 #rateUS{
     text-align: center;
@@ -114,4 +112,5 @@ section{
     border: 2px solid white;
     color: white;
     padding: 0.8em 3em;
+    cursor: pointer;
 }
