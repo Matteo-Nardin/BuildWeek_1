@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Outfit&display=swap');
+
+/* Impostazioni generali */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+    margin: 0 auto;
+    user-select: none;
+}
+
+.bianco {
+    color: white;
+}
+
+.display {
+    display: inline-block;
+}
+
+/* Header */
+
+picture img {
+    width: 17em;
+    padding: 3em;
+    margin-left: 4em;
+}
+
+
+/* Main */
+
+main {
+    padding: 1em;
+    margin: 2em 6em;
+    font-family: 'Inter', sans-serif;
+}
+
+h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 5em;
+    line-height: 0.8em;
+}
+
+h1 div {
+    font-weight: bold;
+}
+
+main h2 {
+    color: #c2128d;
+    font-weight: bold;
+    font-size: 1.8em;
+    padding-top: 1.8em;
+}
+
+p {
+    font-size: 1em;
+    padding-top: 1em;
+}
+
+main ul {
+    padding: 2em;
+    line-height: 1.4em;
+}
+
+#istruzioni {
+    width: 80em;
+}
+
+b {
+    font-weight: bold;
+}
+
+#istruzioni input {
+    width: 1.5em;
+    height: 1.5em;
+    background: transparent;
+    border: 0.15em solid white;
+}
+
+main button {
+    float: right;
+    font-size: 1.3em;
+    padding: 0.7em 2em 0.7em 2em;
+    color: #0b113b;
+    font-weight: bold;
+    background-color: #00ffff;
+}
