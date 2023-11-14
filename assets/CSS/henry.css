@@ -1,0 +1,37 @@
+#container {
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    color: whitesmoke;
+}
+
+.epicode_logo_timer {
+    border: 1px solid white;
+    padding-top: 60px 10%;
+}
+.logo {
+    display: inline-block;
+    width: 20%;
+    border: 1px solid white;
+    
+}
+.logo img {
+    width: 100%;
+}
+
+
+.content_circle {
+    display: inline-block;  
+    background-color: aqua;
+    text-align: center;
+}
+
+.content_circle h2 {
+    font-size: 2em;
+}
+
+.content_circle p {
+    font-size: 0.5em;
+    text-transform: uppercase;
+}
