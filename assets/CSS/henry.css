@@ -1,4 +1,4 @@
-#container {
+body {
     background-image: url(../img/bg.jpg);
     background-size: cover;
     font-family: 'Times New Roman', Times, serif;
@@ -7,13 +7,12 @@
 }
 
 .epicode_logo_timer {
-    border: 1px solid white;
-    padding-top: 60px 10%;
+    margin-top: 50px;
 }
 .logo {
     display: inline-block;
     width: 20%;
-    border: 1px solid white;
+    margin-left: 10%;
     
 }
 .logo img {
@@ -24,14 +23,62 @@
 .content_circle {
     display: inline-block;  
     background-color: aqua;
+    width: 11%;
     text-align: center;
+    box-sizing: border-box;
+    padding: 50px 2%;
+    border-radius: 50%;
+    margin: 0 10% 0 47.2%;
 }
 
 .content_circle h2 {
-    font-size: 2em;
+    font-size: 2.7em;
 }
 
 .content_circle p {
     font-size: 0.5em;
     text-transform: uppercase;
+}
+
+.question_area {
+    padding: 0 15%;
+    text-align: center;
+}
+
+.question_text {
+    font-size: 2.8em;
+    width: 60%;
+    margin: 60px auto;
+}
+
+form button {
+    width: 45%;
+    background-color: #262951;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 15px 2%;
+    border-radius: 55px;
+    border: 3px outset;
+    color: whitesmoke;
+}
+form button:hover {
+    background: rgb(131,21,21);
+    background: linear-gradient(180deg, rgba(131,21,21,1) 0%, rgba(144,0,128,1) 100%); 
+    /* border: 3px outset rgb(131,21,21);
+    border: 3px outset linear-gradient(180deg, rgba(131,21,21,1) 0%, rgba(144,0,128,1) 100%);  */
+}
+
+.numerazione_pagina {
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 120px;
+}
+
+.numerazione_pagina h3 {
+    margin-top: 180px;
+}
+
+.totale_pagina {
+    color: #93137f;
 }
