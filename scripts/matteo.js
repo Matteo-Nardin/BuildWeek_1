@@ -117,8 +117,10 @@ btn.addEventListener("click", function() {
 
         quest.innerText = questions[questionNumber].question;
 
-        //qua ci potrebbe andare il "generatore di bottoni" ???
-        
+        //qua ci potrebbe andare il "generatore di bottoni" ??? ok funziona ma....devo cancellare i bottoni creati
+        TypeOfAnswer(questionNumber);
+
+        // devo cancellare i bottoni creati
 
         questionNumber++;
 })
@@ -131,9 +133,55 @@ btn.addEventListener("click", function() {
 //     quest.innerText = questions[i].question;
 //     i++;
 // }
+//----------------------------------------PIERPAOLO--------------------------------------------------------
+// console.log(questions[0].correct_answer)
+// console.log(questions[0].incorrect_answers)
 
+function TypeOfAnswer(n){
+  // for(let n=0; n<questions.length; n++){
+    /* document.p.appendChild(questions[n].question) */
+    
+    //-----per le domande multiple----------------
+    // riempio l'array delle risposte sbagliate
+    let arr = [...questions[n].incorrect_answers];
+    // mi genero un valore casuale da poter utilizzare per inserire la risposta vera
+    let rand = Math.floor(Math.random() * questions[n].incorrect_answers.length);
+    arr.splice(rand, 0 , questions[n].correct_answer);
+    console.log(arr)
+    // arr da usare per riempire il contenuto dei bottoni
+    //--------------------------------------------
+    if(questions[n].type === "multiple"){
+        console.log (n)
+        // createButton(4);
 
+        for(let c=0; c<arr.length; c++){
+          let x = document.createElement ("button");
+          x.innerText = arr[c]
+          document.body.appendChild(x)
+        }
+    }else{
+        for(let c=0; c<arr.length; c++){
+          let x = document.createElement ("button");
+          x.innerText = arr[c]
+          document.body.appendChild(x)
+        }
+    } 
+  // }
+  
+}
 
+//TypeOfAnswer()
+
+//Per creare i bottoni
+function createButton(n){
+  for(let i=0; i<n; i++){
+      let x = document.createElement ("button");
+      // x.innerText = questions[i].correct_answer
+      //  x.innerText = 'Prova'
+      document.body.appendChild(x)
+  } 
+}
+//-----------------------------------------------------------------------------------------------------------------------------
 window.onload = function () {
   // TIPS:
 
@@ -155,3 +203,18 @@ window.onload = function () {
   // Se stai mostrando una domanda alla volta, aggiungi semplicemente un punto alla variabile del punteggio che hai precedentemente creato SE la risposta selezionata è === correct_answer
 
   // BUON LAVORO 💪🚀
+
+  // declare the function 
+// const shuffle = (array: string[]) => { 
+//   for (let i = array.length - 1; i > 0; i--) { 
+//     const j = Math.floor(Math.random() * (i + 1)); 
+//     [array[i], array[j]] = [array[j], array[i]]; 
+//   } 
+//   return array; 
+// }; 
+  
+// // Usage 
+// const myArray = ["apple", "banana", "cherry", "date", "elderberry"]; 
+// const shuffledArray = shuffle(myArray); 
+
+// console.log(shuffledArray); 
