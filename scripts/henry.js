@@ -104,10 +104,15 @@ const questions = [
 let score = 0;
 let domandeCorette=[];
 let domandeSbagliate =[];
+let domande=[];
+let numDomande = 5;
 let c=0; //contatore delle domande da mostrare e rispondere
 let difficoltaScelta = 'easy'; // impostato da solo ma poi deve essere chiesto dall'utente
-let difficolta= questions.filter(obj => obj.difficulty == difficoltaScelta); //raccolgo subito gli oggetti nell'array delle domande che hanno la difficolta scelta dall'utente
-document.querySelector('.totale_pagina').innerText ='/ '+ difficolta.length; //Mostro il numero totale di domande
+for (i=0; i  <numDomande ; i++) {
+    domande.push(questions[i]); //raccolgo subito gli oggetti nell'array delle domande che hanno la difficolta scelta dall'utente
+}
+console.log(domande);
+document.querySelector('.totale_pagina').innerText ='/ '+ domande.length; //Mostro il numero totale di domande
 
 
 
@@ -115,19 +120,19 @@ document.querySelector('.totale_pagina').innerText ='/ '+ difficolta.length; //M
     document.querySelectorAll('.answers form button').forEach( btn => btn.remove());
 
     //mostro la nuova domanda e aggiorno il numero della domanda
-    document.querySelector('h1').innerText = difficolta[c].question;
+    document.querySelector('h1').innerText = domande[c].question;
     document.querySelector('.numero_pagina').innerText = c+1;
 
     //creo nuovi buttoni in base al numeri di risposte presenti
-    for (let i = 0; i < (+difficolta[c].incorrect_answers.length + 1); i++) {
+    for (let i = 0; i < domande[c].incorrect_answers.length + 1; i++) {
         let bottone = document.createElement('button');
         bottone.type = 'button';
         document.querySelector('form').appendChild(bottone);
     }                              
 
     // Inserisco in uno dei bottone generati random la risposta giusta
-    let correct_answerBtn = document.querySelectorAll('.answers form button')[Math.floor(Math.random()*difficolta[c].incorrect_answers.length)];
-    correct_answerBtn.innerText =difficolta[c].correct_answer;
+    let correct_answerBtn = document.querySelectorAll('.answers form button')[Math.floor(Math.random()*domande[c].incorrect_answers.length)];
+    correct_answerBtn.innerText =domande[c].correct_answer;
 
 
     let d=0; // contatore delle risposte non essate
@@ -136,7 +141,7 @@ document.querySelector('.totale_pagina').innerText ='/ '+ difficolta.length; //M
     document.querySelectorAll('.answers form button').forEach(btn => {
         //Mostro le risposte false
         if (btn.innerText != correct_answerBtn.innerText) {
-            btn.innerText = difficolta[c].incorrect_answers[d];
+            btn.innerText = domande[c].incorrect_answers[d];
             d++;
         }
     })
@@ -144,7 +149,7 @@ document.querySelector('.totale_pagina').innerText ='/ '+ difficolta.length; //M
     document.querySelectorAll('.answers form button').forEach(btn => {
         btn.addEventListener('click', () => {
             //controllo se il buttone quando cliccato corrisponde alla domanda giusta...
-            if (btn.innerText == difficolta[c].correct_answer) {
+            if (btn.innerText == domande[c].correct_answer) {
                 //Gli do una classname per mostrare il bottone verde
                 btn.className= 'correct';
                 //Aumento il score
@@ -158,7 +163,7 @@ document.querySelector('.totale_pagina').innerText ='/ '+ difficolta.length; //M
                 //inoltre ciclo i bottoni per mostrare la risposta vera
                 domandeSbagliate.push[btn.innerText];
                 document.querySelectorAll('.answers form button').forEach(btn => {
-                    if(btn.innerText== difficolta[c].correct_answer){
+                    if(btn.innerText== domande[c].correct_answer){
                         btn.className = 'correct';
                     }
                 })
@@ -166,7 +171,7 @@ document.querySelector('.totale_pagina').innerText ='/ '+ difficolta.length; //M
             //Creo un nuovo bottone per andare alla domanda succesiva
             let nextQuestion = document.createElement('button');
             //faccio un controllo all'ultima domanda per andare alla pagina successiva
-            if((c+1 == difficolta.length)) {
+            if((c+1 == domande.length)) {
                 nextQuestion.innerText='Go to results';
                 //codice per andare alla pagina dei risultati
                 nextQuestion.addEventListener('click', () => window.location.href = "../cielo.html");
@@ -188,19 +193,19 @@ function nextpage() {
     document.querySelectorAll('.answers form button').forEach( btn => btn.remove());
 
     //mostro la nuova domanda e aggiorno il numero della domanda
-    document.querySelector('h1').innerText = difficolta[c].question;
+    document.querySelector('h1').innerText = domande[c].question;
     document.querySelector('.numero_pagina').innerText = c+1;
 
     //creo nuovi buttoni in base al numeri di risposte presenti
-    for (let i = 0; i < difficolta[c].incorrect_answers.length + 1; i++) {
+    for (let i = 0; i < domande[c].incorrect_answers.length + 1; i++) {
         let bottone = document.createElement('button');
         bottone.type = 'button';
         document.querySelector('form').appendChild(bottone);
     }                              
 
     // Inserisco  in uno dei bottone a caso generati la risposta giusta
-    let correct_answerBtn = document.querySelectorAll('.answers form button')[Math.floor(Math.random()*difficolta[c].incorrect_answers.length)];
-    correct_answerBtn.innerText =difficolta[c].correct_answer;
+    let correct_answerBtn = document.querySelectorAll('.answers form button')[Math.floor(Math.random()*domande[c].incorrect_answers.length)];
+    correct_answerBtn.innerText =domande[c].correct_answer;
 
 
     let d=0; // contatore delle risposte non essate
@@ -209,7 +214,7 @@ function nextpage() {
     document.querySelectorAll('.answers form button').forEach(btn => {
         //Mostro le risposte false
         if (btn.innerText != correct_answerBtn.innerText) {
-            btn.innerText = difficolta[c].incorrect_answers[d];
+            btn.innerText = domande[c].incorrect_answers[d];
             d++;
         }
     })
@@ -217,7 +222,7 @@ function nextpage() {
     document.querySelectorAll('.answers form button').forEach(btn => {
         btn.addEventListener('click', () => {
             //controllo se il buttone quando cliccato corrisponde alla domanda giusta...
-            if (btn.innerText == difficolta[c].correct_answer) {
+            if (btn.innerText == domande[c].correct_answer) {
                 //Gli do una classname per mostrare il bottone verde
                 btn.className= 'correct';
                 //Aumento il score
@@ -231,7 +236,7 @@ function nextpage() {
                 //inoltre ciclo i bottoni per mostrare la risposta vera
                 domandeSbagliate.push[btn.innerText];
                 document.querySelectorAll('.answers form button').forEach(btn => {
-                    if(btn.innerText== difficolta[c].correct_answer){
+                    if(btn.innerText== domande[c].correct_answer){
                         btn.className = 'correct';
                     }
                 })
@@ -239,7 +244,7 @@ function nextpage() {
             //Creo un nuovo bottone per andare alla domanda succesiva
             let nextQuestion = document.createElement('button');
             //faccio un controllo all'ultima domanda per andare alla pagina successiva
-            if((c+1 == difficolta.length)) {
+            if((c+1 == domande.length)) {
                 nextQuestion.innerText='Go to results';
                 //codice per andare alla pagina dei risultati
                 nextQuestion.addEventListener('click', () => window.location.href = "../cielo.html");
