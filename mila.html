@@ -25,16 +25,21 @@
             <h1>Tell us how it's going</h1>
             <p>From 0 to 10 , how likely are you to recommend EPICODE to a friend or a colleague?</p>
             <div id="starsdiv">
-            <img src="/assets/img/star.svg" alt="stars">
-            <img src="/assets/img/star.svg" alt="stars">
-            <img src="/assets/img/star.svg" alt="stars">
-            <img src="/assets/img/star.svg" alt="stars">
-            <img src="/assets/img/star.svg" alt="stars">
-            <img src="/assets/img/star.svg" alt="stars">
-            <img src="/assets/img/star.svg" alt="stars">
-            <img src="/assets/img/star.svg" alt="stars">
-            <img src="/assets/img/star.svg" alt="stars">
-            <img src="/assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
+
+
+
+
+
             </div>
             
             <p>Leave us an open feedback about your experience so far</p>
@@ -45,6 +50,17 @@
             </form>
             <br>
             <button>MORE INFO</button>
+
+            <script>
+                function evidenziastelle(starCount) {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                star.style.color = index < starCount ? '#FFD700' : '#ccc';
+            });
+        }
+
+                
+            </script>
 
 
         </main>
