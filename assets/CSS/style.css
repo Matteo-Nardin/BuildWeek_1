@@ -1,0 +1,247 @@
+/* Stylesheet finale (da provare) */
+
+/* IMPOSTAZIONI GENERALI */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat; /*... da cielo.css*/
+    background-attachment: fixed;
+    color: whitesmoke; /* ...da henry.css*/
+    margin: 0 auto;  /* ... da vincenzo.css */
+    user-select: none; /* ... da vincenzo.css */
+    font-family: 'Inter', sans-serif; /* ... da henry.css*/ 
+}
+
+.bianco { /* ... da vincenzo.css --> utilizzata per impostare il colore bianco in varie sezioni */
+    color: white;
+}
+
+.display { /* .... da vincenzo.css --> utilizzata per impostare inline-block in varie sezioni */
+    display: inline-block;
+}
+
+/* PROPOSTA: sostituire tutte le ripetizioni di font-family dei titoli, con un'altra classe*/ 
+
+/* HEADER */
+
+/* Logo di epicode*/
+picture img {  /* ... da vincenzo.css */
+    width: 100%; 
+    max-width: 17em;
+    padding: 3em;
+    margin-left: 4em;
+    /* display: inline-block; ... da henry.css --> commentato perché utilizziamo la classe .display*/
+}
+
+header img{ /* ... da henry.css */
+    width: 15%;
+    margin: 2em 4em;
+}
+
+.epicode_logo_timer { /* ... da henry.css */
+    margin-top: 50px;
+}
+
+.logo { /* ... da henry.css */
+    /* display: inline-block; ... da henry.css --> commentato perché utilizziamo la classe .display*/
+    width: 15%;
+    margin-left: 10%;
+    height: 120px;
+    
+}
+
+.logo img { /* ... da henry.css */
+    width: 100%;
+} 
+/* Main */
+
+main {
+    padding: 1em;
+    margin: 2em 6em; 
+}
+
+/* main {
+    height: 100%;   ///// ...cielo.css
+} */
+
+h1 { /* ... da vincenzo.css*/
+    font-family: 'Outfit', sans-serif;
+    font-size: 4em;
+    line-height: 0.8em;
+}
+
+h1 div {
+    font-weight: bold;
+}
+
+h2 {
+    font-family: 'Outfit', sans-serif;
+}
+
+#h2istruzioni {
+    color: #c2128d;
+    font-weight: bold;
+    font-size: 1.8em;
+    padding-top: 1.8em;
+}
+
+p { /* da cielo.css*/
+    /* font-family: 'Inter', sans-serif; --> commentiamo questo perché già impostato nel body*/
+    font-weight: 300;
+    /* padding-top: 1em;  da vincenzo.css -- DA VERIFICARE se è adattabile anche nelle altre schermate*/
+    /* color: white --> commentiamo questo perché possiamo usare la classe .bianco*/;
+}
+
+main ul { /* da vincenzo.css --> unorder list della welcome page */
+    padding: 2em;
+    line-height: 1.4em;
+}
+
+#is { /* da vincenzo.css --> per la sezione istruzioni */
+    width: 75%;
+}
+
+b { /* da vincenzo.css --> per evidenziare alcune parole */
+    font-weight: bold;
+}
+
+#istruzioni input { /* da vincenzo.css --> per la sezione istruzioni */
+    width: 1.5em;
+    height: 1.5em;
+    background: transparent;
+    border: 0.15em solid white;
+}
+
+#btnPr { /* da vincenzo.css --> per il pulsante della welcome page */
+    float: right;
+    margin-bottom: 1em;
+    font-size: 1.3em;
+    padding: 0.7em 2em 0.7em 2em;
+    color: #0b113b;
+    font-weight: bold;
+    background-color: #00ffff;
+}
+
+.content_circle { /* da henry.css */
+    /* display: inline-block; qui sostituiamo inserendo la classe .display */
+    border: 1.5vw solid #00ffff;
+    width: 8%;
+    padding: 2.6vh 0.2%;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 10% 0 50%;
+}
+
+.content_circle h2 { /* da henry.css */
+    font-size: 5em;
+    font-family: 'Outfit', sans-serif;
+}
+
+.content_circle p { /* da henry.css */
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.question_area { /* da henry.css */
+    padding: 0 15%;
+    text-align: center;
+}
+
+.question_text { /* da henry.css */
+    font-size: 4.5em;
+    width: 60%;
+    margin: 60px auto;
+    font-family: 'Outfit', sans-serif;
+}
+
+form button { /* da henry.css */
+    width: 40%;
+    background-color: #262951;
+    padding: 25px 0;
+    text-align: center;
+    font-size: 2.3em;
+    margin: 15px 2%;
+    border-radius: 55px;
+    border: 3px outset;
+    color: whitesmoke;
+}
+form button:hover { /* da henry.css */
+    background: rgb(131,21,21);
+    background: linear-gradient(180deg, rgba(131,21,21,1) 0%, rgba(144,0,128,1) 100%); 
+}
+
+.numerazione_pagina { /* da henry.css */
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 120px;
+}
+
+.numerazione_pagina h3 { /* da henry.css */
+    margin-top: 180px;
+    font-size: 2em;
+    font-family: 'Outfit', sans-serif;
+}
+
+.totale_pagina { /* da henry.css */
+    color: #93137f;
+}
+
+.percent { /* da cielo.css */
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 3em;
+}
+
+.questions { /* da cielo.css */
+    font-family: 'Outfit', sans-serif;
+}
+
+#circle { /* da cielo.css */
+    margin: 2em 5em;
+    display: inline-block;
+    border: 2.5em solid white;
+    border-radius: 50%;
+    height: 12em;
+    width: 12em;
+    padding: 1.3em;
+    box-shadow: 0.2em 0.2em 2em rgba(0, 0, 0, 0.533), -0.2em -0.2em 2em rgba(0, 0, 0, 0.533), 0.2em 0.2em 2em rgba(0, 0, 0, 0.533) inset, -0.2em -0.2em 2em rgba(0, 0, 0, 0.533) inset;
+}
+
+#congrat { /* da cielo.css */
+    margin: 1.5em 0;
+    box-sizing: content-box;
+    line-height: 1.3;
+}
+
+#congrat p { /* da cielo.css */
+    font-weight: 600;
+}
+
+.azure { /* da cielo.css */
+    color: #00ffff;
+}
+
+#circle > p { /* da cielo.css */
+    font-size: 0.8em;
+    line-height: 1.3;
+}
+
+
+#rateUS { /* da cielo.css */
+    text-align: center;
+    margin-bottom: 5em;
+}
+
+#rateUS button { /* da cielo.css */
+    font-size: 1.5em;
+    font-weight: 600;
+    background-color: #00ffff00;
+    border: 2px solid white;
+    color: white;
+    padding: 0.8em 3em;
+    cursor: pointer;
+}
