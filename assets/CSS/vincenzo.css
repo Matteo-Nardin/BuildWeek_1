@@ -24,7 +24,7 @@ body {
 /* Header */
 
 picture img {
-    width: 100%; 
+    width: 80%; 
     max-width: 17em;
     padding: 3em;
     margin-left: 4em;
@@ -41,7 +41,7 @@ main {
 
 h1 {
     font-family: 'Outfit', sans-serif;
-    font-size: 5em;
+    font-size: 4em;
     line-height: 0.8em;
 }
 
@@ -66,10 +66,6 @@ main ul {
     line-height: 1.4em;
 }
 
-#istruzioni {
-    width: 80%;
-}
-
 #is {
     width: 75%;
 }
@@ -87,10 +83,10 @@ b {
 
 main button {
     float: right;
+    margin-bottom: 1em;
     font-size: 1.3em;
     padding: 0.7em 2em 0.7em 2em;
     color: #0b113b;
     font-weight: bold;
     background-color: #00ffff;
-    filter: drop-shadow(0 0 1.2rem #00ffff);
 }

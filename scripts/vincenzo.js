@@ -5,6 +5,12 @@ let procedi = () => {
     checkbox.addEventListener('change', () => {
         // Abilita o disabilita il pulsante in base allo stato della checkbox
         btn.disabled = !checkbox.checked;
+
+        if (checkbox.checked) {
+            btn.style.filter = 'drop-shadow(0 0 1.2rem #00ffff)';
+        } else {
+            btn.style.filter = 'none'; 
+        }
     });
 
     btn.addEventListener('click', (evt) => {
