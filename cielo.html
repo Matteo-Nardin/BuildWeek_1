@@ -26,17 +26,23 @@
             <section>
                 <div id="correct">
                     <h2>Correct</h2>
-                    <p class="percent">66.7%</p>
-                    <p class="questions">4/6 questions</p>
+                    <p class="percent"></p>   
+                    <p class="questions"></p>
                 </div>
 
-                <div id="circle">
-                    <div id="congrat">
-                        <p>Congratulations!</p>
-                        <p class="azure">You passed the exam.</p>
-                    </div>
-                    <p>We'll send you the certificate in few minutes. <br>
-                    Check your email (including promotions / spam folder)</p>
+                <div id="circle-container">
+                        <div id="prova"></div>
+                        <canvas id="myChart" padding="2em" width="100">
+                        
+                            <!-- <div id="congrat">
+                                 <p>Congratulations!</p>
+                                 <p class="azure">You passed the exam.</p>
+                             </div>
+                             <p>We'll send you the certificate in few minutes. <br>
+                             Check your email (including promotions / spam folder)</p>
+                              -->
+                        </canvas>
+                    
                 </div>
 
                 <div id="wrong">
@@ -52,5 +58,11 @@
             </div>
         </main>
     </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts/henry.js"></script>
+    <script src="scripts/cielo.js"></script>
 </body>
 </html>
