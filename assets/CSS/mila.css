@@ -1,0 +1,48 @@
+body{
+    background-image: url(/assets/img/bg.jpg);
+    background-size: cover;
+}
+
+
+header {
+    padding: 2% 0 0 5%
+}
+header img{
+    width: 15%;
+}
+h1 {
+    font-size: 60px;
+    font-family: 'Outfit', sans-serif;
+}
+main{
+    text-align: center;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    padding: 0 25%;
+}
+main p {
+    font-size: 24px;
+}
+#starsdiv{
+    padding: 3% 0 10% 0;
+}
+button{
+    background-color: #00FFFF;
+    width: 30%;
+    height: 50px;
+    border-style: none;
+    color: darkblue;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 1); /* Ombra ciano */
+    font-family: 'Inter', sans-serif;
+    font-weight: bolder;
+    font-size: 16px;
+
+}
+input{
+    background-color: transparent;
+    font-size: 16px;
+    border-width: 0 0 1px 0;
+    border-color: deeppink;
+    width: 100%;
+}
