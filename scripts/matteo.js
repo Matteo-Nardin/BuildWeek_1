@@ -100,17 +100,24 @@ const questions = [
   
 let score = 0;
 let questionNumber = 0; // indice domanda questionNumber>question.length
-let btn = document.querySelector(".btn");
+let bt = document.querySelector(".btn");
+let asBox= document.querySelector("#answerBox");
 
-// al click scorro il testo (potrebbe essere una funzione?)
-btn.addEventListener("click", function() {
+bt.addEventListener("click", function() {
         // in questo if richiamo "automaticamente" il cambio di pagina una volta cliccata l'ultimo bottone
         if(questionNumber === questions.length -1){
             console.log("son dentro")
-            btn.addEventListener("click", function() {location.href = "../cielo.html"
+            bt.addEventListener("click", function() {location.href = "../cielo.html"
             });
         }
 
+        // rimuove i bottoni
+        let rBtn = document.querySelectorAll("#answerBox > button");
+        // console.log(rBtn);
+        for(let i =0; i<rBtn.length; i++){
+          rBtn[i].remove()
+        }
+       
         let quest = document.querySelector(".domanda");
         console.log(quest);
         console.log(questionNumber);
@@ -120,10 +127,14 @@ btn.addEventListener("click", function() {
         //qua ci potrebbe andare il "generatore di bottoni" ??? ok funziona ma....devo cancellare i bottoni creati
         TypeOfAnswer(questionNumber);
 
-        // devo cancellare i bottoni creati
-
         questionNumber++;
 })
+
+let btn = document.querySelectorAll("button");
+for (let i = 0; i < btn.length; i++) {
+  btn[i].style.backgroundColor = "red";
+}
+console.log(btn)
 // while dentro ad un listener?
 // let i = 0;
 // while(i < questions.length){
@@ -134,8 +145,6 @@ btn.addEventListener("click", function() {
 //     i++;
 // }
 //----------------------------------------PIERPAOLO--------------------------------------------------------
-// console.log(questions[0].correct_answer)
-// console.log(questions[0].incorrect_answers)
 
 function TypeOfAnswer(n){
   // for(let n=0; n<questions.length; n++){
@@ -151,19 +160,19 @@ function TypeOfAnswer(n){
     // arr da usare per riempire il contenuto dei bottoni
     //--------------------------------------------
     if(questions[n].type === "multiple"){
-        console.log (n)
+       
         // createButton(4);
 
         for(let c=0; c<arr.length; c++){
           let x = document.createElement ("button");
           x.innerText = arr[c]
-          document.body.appendChild(x)
+          asBox.appendChild(x)
         }
     }else{
         for(let c=0; c<arr.length; c++){
           let x = document.createElement ("button");
           x.innerText = arr[c]
-          document.body.appendChild(x)
+          asBox.appendChild(x)
         }
     } 
   // }
