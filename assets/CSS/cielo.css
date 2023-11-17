@@ -58,6 +58,7 @@ section{
     display: inline-block;
     text-align: left;
     margin: 3em;
+    height: 100%;
 }
 #wrong{
     display: inline-block;
@@ -94,6 +95,7 @@ h2{
 /* Grafico */
 #myChart{
     height: 20em;    
+
 }
 /* Testo interno */
 #prova{
@@ -137,7 +139,10 @@ h2{
     cursor: pointer;
 }
 
-
+#rateUS button:hover{
+    background-color: rgba(0, 0, 0, 0.248);
+    color: rgb(212, 212, 212);
+}
 
 
 

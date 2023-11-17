@@ -1,7 +1,11 @@
-// score e numDomande non funzionano 
 
-    score = 5;   // numero domande corrette
-    numDomande = 10;  // numero domande totale
+
+// A A A  :  la variabile score non funziona!!!  --->  può essere che non venga incrementata ???
+
+
+
+    /* score = 7;   // numero risposte corrette
+    numDomande = 20; */  // numero domande totale
 
     let corrette = (score * 100)/numDomande;    // percentuale di risposte corrette 
     let sbagliate = 100-corrette;    // percentuale di risposte sbagliate
@@ -93,10 +97,19 @@ const wrong = () => {
     questions.innerText = numDomande-score +'/'+numDomande+' questions'
 }
 
+// funzione per bottone 'rate us'
+const btn = ()=>{
+    let btn = document.querySelector('#rateUS button')
+    btn.addEventListener('click', ()=>{
+        window.location.href = "../mila.html";
+    })
+}
+
+
 // richiamo funzioni
 correct()
 wrong()
-
+btn()
 
 if(corrette>=60){
     examPassed()
