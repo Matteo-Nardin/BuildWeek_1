@@ -25,16 +25,23 @@
             <h1>Tell us how it's going</h1>
             <p>From 0 to 10 , how likely are you to recommend EPICODE to a friend or a colleague? y</p>
             <div id="starsdiv">
-            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
-            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
-            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
-            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
-            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
-            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
-            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
-            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
-            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
-            <img class="star" onmouseover="evidenziastelle" src="/assets/img/star.svg" alt="stars">
+                <svg>
+                    <use src="assets/img/star.svg"></use>
+                </svg>
+                <object type="img" data="assets/img/star.svg">
+
+                </object>
+            <img id="s" src="assets/img/star.svg" alt="stars">
+            <div id ="stellina"></div>
+            <img class="star" onmouseover="evidenziastelle" src="assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="assets/img/star.svg" alt="stars">
+            <img class="star" onmouseover="evidenziastelle" src="assets/img/star.svg" alt="stars">
 
 
 
@@ -52,6 +59,10 @@
             <button>MORE INFO</button>
 
             <script>
+                let x = document.querySelectorAll(".star");
+                x[2].nextElementSibling;
+                console.log(x[2].nextElementSibling)
+
                 function evidenziastelle(starCount) {
             const stars = document.querySelectorAll('.star');
             stars.forEach((star, index) => {

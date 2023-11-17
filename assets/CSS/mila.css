@@ -55,3 +55,7 @@ img.star {
 img.star:hover {
     color: #FFD700; /* Colore giallo per la stella passata sopra */
 }
+
+#stellina{
+    content: url(assets/img/star.svg)
+}
