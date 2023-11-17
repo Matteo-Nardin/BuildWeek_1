@@ -114,8 +114,8 @@ for (i=0; i  <numDomande ; i++) {
 console.log(domande);
 document.querySelector('.totale_pagina').innerText ='/ '+ domande.length; //Mostro il numero totale di domande
 
-
-
+/*
+requestAnimationFrame(updateTimer);
     //cancello i buttoni creati precedentemente
     document.querySelectorAll('.answers form button').forEach( btn => btn.remove());
 
@@ -135,7 +135,7 @@ document.querySelector('.totale_pagina').innerText ='/ '+ domande.length; //Most
     correct_answerBtn.innerText =domande[c].correct_answer;
 
 
-    let d=0; // contatore delle risposte non essate
+    let d=0; // contatore delle incorrect_answers
 
     //Ciclo i buttoni creati
     document.querySelectorAll('.answers form button').forEach(btn => {
@@ -147,13 +147,14 @@ document.querySelector('.totale_pagina').innerText ='/ '+ domande.length; //Most
     })
     //Ciclo i bottoni per attaccare un ascoltatore ad ogni bottone
     document.querySelectorAll('.answers form button').forEach(btn => {
+      let tally=0;
         btn.addEventListener('click', () => {
             //controllo se il buttone quando cliccato corrisponde alla domanda giusta...
             if (btn.innerText == domande[c].correct_answer) {
                 //Gli do una classname per mostrare il bottone verde
                 btn.className= 'correct';
                 //Aumento il score
-                score++;
+                console.log(tally++);
                 //memorizzo la domanda 
                 domandeCorette.push[btn.innerText];
                 //se bottone cliccato è falso...
@@ -186,79 +187,132 @@ document.querySelector('.totale_pagina').innerText ='/ '+ domande.length; //Most
             c++;
         })
     })
+    score+=tally;
+*/
 
 
 function nextpage() {
-    //cancello i buttoni creati precedentemente
-    document.querySelectorAll('.answers form button').forEach( btn => btn.remove());
+  requestAnimationFrame(updateTimer);
+  //cancello i buttoni creati precedentemente
+  document.querySelectorAll('.answers form button').forEach( btn => btn.remove());
 
-    //mostro la nuova domanda e aggiorno il numero della domanda
-    document.querySelector('h1').innerText = domande[c].question;
-    document.querySelector('.numero_pagina').innerText = c+1;
+  //mostro la nuova domanda e aggiorno il numero della domanda
+  document.querySelector('h1').innerText = domande[c].question;
+  document.querySelector('.numero_pagina').innerText = c+1;
 
-    //creo nuovi buttoni in base al numeri di risposte presenti
-    for (let i = 0; i < domande[c].incorrect_answers.length + 1; i++) {
-        let bottone = document.createElement('button');
-        bottone.type = 'button';
-        document.querySelector('form').appendChild(bottone);
-    }                              
+  //creo nuovi buttoni in base al numeri di risposte presenti
+  for (let i = 0; i < domande[c].incorrect_answers.length + 1; i++) {
+      let bottone = document.createElement('button');
+      bottone.type = 'button';
+      document.querySelector('form').appendChild(bottone);
+  }                              
 
-    // Inserisco  in uno dei bottone a caso generati la risposta giusta
-    let correct_answerBtn = document.querySelectorAll('.answers form button')[Math.floor(Math.random()*domande[c].incorrect_answers.length)];
-    correct_answerBtn.innerText =domande[c].correct_answer;
+  // Inserisco  in uno dei bottone a caso generati la risposta giusta
+  let correct_answerBtn = document.querySelectorAll('.answers form button')[Math.floor(Math.random()*domande[c].incorrect_answers.length)];
+  correct_answerBtn.innerText =domande[c].correct_answer;
 
 
-    let d=0; // contatore delle risposte non essate
+  let d=0; // contatore delle risposte non essate
+  document.querySelectorAll('.answers form button').forEach(btn => {
+    //Mostro le risposte false
+    if (btn.innerText != correct_answerBtn.innerText) {
+        btn.innerText = domande[c].incorrect_answers[d];
+        d++;
+    }
+  })
 
-    //Ciclo i buttoni creati
+  //Ciclo i buttoni creati
+  let i=1;
+  document.querySelectorAll('.answers form button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if(i>0) {
+        i--;
+        createNextQuestionButton();
+        score += scoreCheck(btn);
+        c++;
+      }
+      //Aumento il contatore
+      
+      return score;
+    });
+    return score;
+  })
+  return score;
+}
+nextpage();
+console.log(score);
+
+function createNextQuestionButton() {
+  //Creo un nuovo bottone per andare alla domanda succesiva
+  let nextQuestion = document.createElement('button');
+  //faccio un controllo all'ultima domanda per andare alla pagina successiva
+  if((c+1 == domande.length)) {
+      nextQuestion.innerText='Go to results';
+      //codice per andare alla pagina dei risultati
+      nextQuestion.addEventListener('click', () => window.location.href = "../cielo.html");
+  }else {
+      nextQuestion.innerText='Next Question';
+  }
+  nextQuestion.className ='nextQuestion';
+  //Appendo bottone
+  document.querySelector('form').appendChild(nextQuestion);
+  nextQuestion.addEventListener('click',nextpage);
+}
+
+function scoreCheck(btn) {
+  //controllo se il buttone quando cliccato corrisponde alla domanda giusta...
+  if (btn.innerText == domande[c].correct_answer) {
+    //Gli do una classname per mostrare il bottone verde
+    btn.className= 'correct';
+    //memorizzo la domanda 
+    domandeCorette.push[btn.innerText];
+    //Aumento lo score
+    return 1;
+    //se bottone cliccato è falso...
+  } else {
+    //Gli do una classname per mostrare il bottone rosso
+    btn.className = 'false';
+    //inoltre ciclo i bottoni per mostrare la risposta vera
+    domandeSbagliate.push[btn.innerText];
     document.querySelectorAll('.answers form button').forEach(btn => {
-        //Mostro le risposte false
-        if (btn.innerText != correct_answerBtn.innerText) {
-            btn.innerText = domande[c].incorrect_answers[d];
-            d++;
+        if(btn.innerText== domande[c].correct_answer){
+            btn.className = 'correct';
         }
-    })
-    //Ciclo i bottoni per attaccare un ascoltatore ad ogni bottone
-    document.querySelectorAll('.answers form button').forEach(btn => {
-        btn.addEventListener('click', () => {
-            //controllo se il buttone quando cliccato corrisponde alla domanda giusta...
-            if (btn.innerText == domande[c].correct_answer) {
-                //Gli do una classname per mostrare il bottone verde
-                btn.className= 'correct';
-                //Aumento il score
-                score++;
-                //memorizzo la domanda 
-                domandeCorette.push[btn.innerText];
-                //se bottone cliccato è falso...
-            } else {
-                //Gli do una classname per mostrare il bottone rosso
-                btn.className = 'false';
-                //inoltre ciclo i bottoni per mostrare la risposta vera
-                domandeSbagliate.push[btn.innerText];
-                document.querySelectorAll('.answers form button').forEach(btn => {
-                    if(btn.innerText== domande[c].correct_answer){
-                        btn.className = 'correct';
-                    }
-                })
-            }
-            //Creo un nuovo bottone per andare alla domanda succesiva
-            let nextQuestion = document.createElement('button');
-            //faccio un controllo all'ultima domanda per andare alla pagina successiva
-            if((c+1 == domande.length)) {
-                nextQuestion.innerText='Go to results';
-                //codice per andare alla pagina dei risultati
-                nextQuestion.addEventListener('click', () => window.location.href = "../cielo.html");
-            }else {
-                nextQuestion.innerText='Next Question';
-            }
-            nextQuestion.className ='nextQuestion';
-            //Appendo bottone
-            document.querySelector('form').appendChild(nextQuestion);
-            nextQuestion.addEventListener('click', nextpage);
-            //Aumento il contatore 
-            c++;
-        })
-    })
+    });
+  }
+}
+
+
+let startTime = performance.now();
+let timeleft = 60;
+let circle = document.querySelector('.circle circle');
+let circumference = parseInt(circle.getAttribute('stroke-dasharray'));
+let timerElement = document.getElementById("timer");
+
+function updateTimer() {
+    let currentTime = performance.now();
+    let elapsedTime = (currentTime - startTime) / 1000; 
+
+    let remainingTime = timeleft - elapsedTime;
+    if (remainingTime <= 0) {
+        remainingTime = 0;
+    }
+
+    let newProgress = 1 - (remainingTime / timeleft); 
+    circle.style.strokeDashoffset = circumference * newProgress;
+
+    if (newProgress >= 0.5) {
+        circle.style.stroke = '#ffa500'; 
+    }
+    if (newProgress >= 0.75) {
+        circle.style.stroke = '#ff0000'; 
+    }
+
+    timerElement.innerHTML = Math.floor(remainingTime); 
+
+    if (remainingTime > 0) {
+        requestAnimationFrame(updateTimer);
+    }
 }
 
 
