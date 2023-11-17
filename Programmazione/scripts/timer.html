@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown - benchmark</title>
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+
+        .circle-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        .circle {
+            fill: none;
+            stroke: #00ffff;
+            stroke-width: 20;
+            stroke-linecap: round;
+            display: inline-block;
+        }
+        .timer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.4em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="circle-container">
+        <svg class="circle" width="200" height="200">
+            <circle cx="100" cy="100" r="90" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+        </svg>
+        <div class="timer" id="timer"></div>
+    </div>
+
+    <script src="timer.js"></script>
+</body>
+</html>
