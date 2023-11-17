@@ -19,6 +19,25 @@ body {
 .logo img {
     width: 100%;
 }
+.circle-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+.circle {
+    fill: none;
+    stroke: #00ffff;
+    stroke-width: 20;
+    stroke-linecap: round;
+    display: inline-block;
+}
+.timer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.4em;
+}
 
 .question_area {
     padding: 0 15%;
@@ -65,34 +84,15 @@ form button:hover {
     color: #93137f;
 }
 
-.correct {
+.correct, .correct:hover {
     background-color: green;
 }
 
-.false {
+.false, .false:hover {
     background-color: red;
 }
 
 .nextQuestion {
     width: 30%;
     background-color: blue;
-}
-.circle-container {
-    position: relative;
-    width: 200px;
-    height: 200px;
-}
-.circle {
-    fill: none;
-    stroke: #00ffff;
-    stroke-width: 20;
-    stroke-linecap: round;
-    display: inline-block;
-}
-.timer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2.4em;
 }

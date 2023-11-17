@@ -7,7 +7,7 @@ const questions = [
     type: "multiple",
     difficulty: "easy",
     question: "What does CPU stand for?",
-    correct_answer: "Central Processing Unit",
+    correct_answer: ["Central Processing Unit"],
     incorrect_answers: [
       "Central Process Unit",
       "Computer Personal Unit",
@@ -20,7 +20,7 @@ const questions = [
     difficulty: "easy",
     question:
       "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
-    correct_answer: "Final",
+    correct_answer: ["Final"],
     incorrect_answers: ["Static", "Private", "Public"],
   },
   {
@@ -28,7 +28,7 @@ const questions = [
     type: "boolean",
     difficulty: "easy",
     question: "The logo for Snapchat is a Bell.",
-    correct_answer: "False",
+    correct_answer: ["False"],
     incorrect_answers: ["True"],
   },
   {
@@ -37,7 +37,7 @@ const questions = [
     difficulty: "easy",
     question:
       "Pointers were not used in the original C programming language; they were added later on in C++.",
-    correct_answer: "False",
+    correct_answer: ["False"],
     incorrect_answers: ["True"],
   },
   {
@@ -46,7 +46,7 @@ const questions = [
     difficulty: "easy",
     question:
       "What is the most preferred image format used for logos in the Wikimedia database?",
-    correct_answer: ".svg",
+    correct_answer: [".svg"],
     incorrect_answers: [".png", ".jpeg", ".gif"],
   },
   {
@@ -54,7 +54,7 @@ const questions = [
     type: "multiple",
     difficulty: "easy",
     question: "In web design, what does CSS stand for?",
-    correct_answer: "Cascading Style Sheet",
+    correct_answer: ["Cascading Style Sheet"],
     incorrect_answers: [
       "Counter Strike: Source",
       "Corrective Style Sheet",
@@ -67,7 +67,7 @@ const questions = [
     difficulty: "easy",
     question:
       "What is the code name for the mobile operating system Android 7.0?",
-    correct_answer: "Nougat",
+    correct_answer: ["Nougat"],
     incorrect_answers: [
       "Ice Cream Sandwich",
       "Jelly Bean",
@@ -79,7 +79,7 @@ const questions = [
     type: "multiple",
     difficulty: "easy",
     question: "On Twitter, what is the character limit for a Tweet?",
-    correct_answer: "140",
+    correct_answer: ["140"],
     incorrect_answers: ["120", "160", "100"],
   },
   {
@@ -87,7 +87,7 @@ const questions = [
     type: "boolean",
     difficulty: "easy",
     question: "Linux was first created as an alternative to Windows XP.",
-    correct_answer: "False",
+    correct_answer: ["False"],
     incorrect_answers: ["True"],
   },
   {
@@ -96,209 +96,129 @@ const questions = [
     difficulty: "medium",
     question:
       "Which programming language shares its name with an island in Indonesia?",
-    correct_answer: "Java",
+    correct_answer: ["Java"],
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
 ];
+let startTime; //Dichiarazione variabile del tempo d'inizio del timer
+let timeleft =10; //Tempo rimanente quando inizia il timer
+let statoAnimazione; //in che stato si trova l'animazione del timer
 
-let score = 0;
 let domandeCorette=[];
 let domandeSbagliate =[];
 let domande=[];
-let numDomande = 5;
+let numDomande = 5; // numero di domande che vuole rispondere l'utente
 let c=0; //contatore delle domande da mostrare e rispondere
 let difficoltaScelta = 'easy'; // impostato da solo ma poi deve essere chiesto dall'utente
+
+let score = 0; //tiene conto del punteggio
+let buttonpresscheck; //variabile per controllare che i bottoni risposte vengono premuti tanto quanto neccesario
+
 for (i=0; i  <numDomande ; i++) {
-    domande.push(questions[i]); //raccolgo subito gli oggetti nell'array delle domande che hanno la difficolta scelta dall'utente
+  domande.push(questions[i]); //raccolgo subito gli oggetti nell'array domande, le domande che hanno la difficolta scelta dall'utente
 }
-console.log(domande);
+
 document.querySelector('.totale_pagina').innerText ='/ '+ domande.length; //Mostro il numero totale di domande
 
-/*
-requestAnimationFrame(updateTimer);
-    //cancello i buttoni creati precedentemente
-    document.querySelectorAll('.answers form button').forEach( btn => btn.remove());
+function nextpage() { //main function che cicla le domande e risposte da mostrare all'utente
 
-    //mostro la nuova domanda e aggiorno il numero della domanda
-    document.querySelector('h1').innerText = domande[c].question;
-    document.querySelector('.numero_pagina').innerText = c+1;
-
-    //creo nuovi buttoni in base al numeri di risposte presenti
-    for (let i = 0; i < domande[c].incorrect_answers.length + 1; i++) {
-        let bottone = document.createElement('button');
-        bottone.type = 'button';
-        document.querySelector('form').appendChild(bottone);
-    }                              
-
-    // Inserisco in uno dei bottone generati random la risposta giusta
-    let correct_answerBtn = document.querySelectorAll('.answers form button')[Math.floor(Math.random()*domande[c].incorrect_answers.length)];
-    correct_answerBtn.innerText =domande[c].correct_answer;
-
-
-    let d=0; // contatore delle incorrect_answers
-
-    //Ciclo i buttoni creati
-    document.querySelectorAll('.answers form button').forEach(btn => {
-        //Mostro le risposte false
-        if (btn.innerText != correct_answerBtn.innerText) {
-            btn.innerText = domande[c].incorrect_answers[d];
-            d++;
-        }
-    })
-    //Ciclo i bottoni per attaccare un ascoltatore ad ogni bottone
-    document.querySelectorAll('.answers form button').forEach(btn => {
-      let tally=0;
-        btn.addEventListener('click', () => {
-            //controllo se il buttone quando cliccato corrisponde alla domanda giusta...
-            if (btn.innerText == domande[c].correct_answer) {
-                //Gli do una classname per mostrare il bottone verde
-                btn.className= 'correct';
-                //Aumento il score
-                console.log(tally++);
-                //memorizzo la domanda 
-                domandeCorette.push[btn.innerText];
-                //se bottone cliccato è falso...
-            } else {
-                //Gli do una classname per mostrare il bottone rosso
-                btn.className = 'false';
-                //inoltre ciclo i bottoni per mostrare la risposta vera
-                domandeSbagliate.push[btn.innerText];
-                document.querySelectorAll('.answers form button').forEach(btn => {
-                    if(btn.innerText== domande[c].correct_answer){
-                        btn.className = 'correct';
-                    }
-                })
-            }
-            //Creo un nuovo bottone per andare alla domanda succesiva
-            let nextQuestion = document.createElement('button');
-            //faccio un controllo all'ultima domanda per andare alla pagina successiva
-            if((c+1 == domande.length)) {
-                nextQuestion.innerText='Go to results';
-                //codice per andare alla pagina dei risultati
-                nextQuestion.addEventListener('click', () => window.location.href = "../cielo.html");
-            }else {
-                nextQuestion.innerText='Next Question';
-            }
-            nextQuestion.className ='nextQuestion';
-            //Appendo bottone
-            document.querySelector('form').appendChild(nextQuestion);
-            nextQuestion.addEventListener('click', nextpage);
-            //Aumento il contatore 
-            c++;
-        })
-    })
-    score+=tally;
-*/
-
-
-function nextpage() {
-  requestAnimationFrame(updateTimer);
-  //cancello i buttoni creati precedentemente
-  document.querySelectorAll('.answers form button').forEach( btn => btn.remove());
+  //cancelAnimationFrame(statoAnimazione); //resetto l'animazione del timer ogni nuova domanda;
+  requestAnimationFrame(updateTimer); //avvio il timer ad ogni nuova domanda,
+  startTime=performance.now(); //Inizializzo il timer con il tempo corrente ogni nuova domanda
+  buttonpresscheck=1; // Inizializzo la variabile di controllo ogni nuova domanda
+  
 
   //mostro la nuova domanda e aggiorno il numero della domanda
   document.querySelector('h1').innerText = domande[c].question;
   document.querySelector('.numero_pagina').innerText = c+1;
 
+  //cancello i buttoni creati precedentemente 
+  document.querySelectorAll('.answers form button').forEach( btn => btn.remove());
+
   //creo nuovi buttoni in base al numeri di risposte presenti
-  for (let i = 0; i < domande[c].incorrect_answers.length + 1; i++) {
+  let numAnswers = domande[c].incorrect_answers.length+ domande[c].correct_answer.length;
+  for (let i = 0; i < numAnswers; i++) {
       let bottone = document.createElement('button');
       bottone.type = 'button';
       document.querySelector('form').appendChild(bottone);
   }                              
 
   // Inserisco  in uno dei bottone a caso generati la risposta giusta
-  let correct_answerBtn = document.querySelectorAll('.answers form button')[Math.floor(Math.random()*domande[c].incorrect_answers.length)];
+  let correct_answerBtn = document.querySelectorAll('.answers form button')[Math.floor(Math.random()*numAnswers)];
   correct_answerBtn.innerText =domande[c].correct_answer;
 
 
   let d=0; // contatore delle risposte non essate
   document.querySelectorAll('.answers form button').forEach(btn => {
-    //Mostro le risposte false
     if (btn.innerText != correct_answerBtn.innerText) {
-        btn.innerText = domande[c].incorrect_answers[d];
-        d++;
+      btn.innerText = domande[c].incorrect_answers[d]; //Mostro le risposte false
+      d++;
     }
   })
-
-  //Ciclo i buttoni creati
-  let i=1;
-  let tally;
-  document.querySelectorAll('.answers form button').forEach(btn => {
+  
+  document.querySelectorAll('.answers form button').forEach(btn => { //Ciclo i buttoni creati
     btn.addEventListener('click', () => {
-      if(i>0) { //controllo if per rendere cliccabile una sola volta i bottoni;
-        i--;
+      if(buttonpresscheck===1) { //controllo if per rendere cliccabile una sola volta i bottoni;
+        buttonpresscheck=0;
         createNextQuestionButton();
-        scoreCheck(btn);
-        //Aumento il contatore
-        c++;
-        return tally;
+        scoreCheck(btn); 
+        cancelAnimationFrame(statoAnimazione);
+        c++; //Aumento il contatore
       }
-      return tally;
     });
-    return tally;
-  })
-  return score+=tally;
+    console.log(score);
+  });
 }
-
-console.log(score);
-
+nextpage();
 
 
 function createNextQuestionButton() {
-  //Creo un nuovo bottone per andare alla domanda succesiva
-  let nextQuestion = document.createElement('button');
-  //faccio un controllo all'ultima domanda per andare alla pagina successiva
-  if((c+1 == domande.length)) {
+  let nextQuestion = document.createElement('button'); //Creo un nuovo bottone per andare alla domanda succesiva
+  if((c+1 == domande.length)) {  //faccio un controllo all'ultima domanda per andare alla pagina successiva
       nextQuestion.innerText='Go to results';
-      //codice per andare alla pagina dei risultati
-      nextQuestion.addEventListener('click', () => window.location.href = "../cielo.html");
+      nextQuestion.addEventListener('click', () => window.location.href = "../cielo.html"); //codice per andare alla pagina dei risultati
   }else {
       nextQuestion.innerText='Next Question';
   }
-  nextQuestion.className ='nextQuestion';
-  //Appendo bottone
-  document.querySelector('form').appendChild(nextQuestion);
-  nextQuestion.addEventListener('click',nextpage);
+    nextQuestion.className ='nextQuestion';
+    nextQuestion.addEventListener('click',nextpage);
+    document.querySelector('form').appendChild(nextQuestion); //Appendo bottone
 }
 
-function scoreCheck(btn, tally) {
-  //controllo se il buttone quando cliccato corrisponde alla domanda giusta...
-  if (btn.innerText == domande[c].correct_answer) {
-    //Gli do una classname per mostrare il bottone verde
-    btn.className= 'correct';
-    //memorizzo la domanda 
-    domandeCorette.push[btn.innerText];
-    //Aumento lo score
-    return tally +=1;
-    //se bottone cliccato è falso...
-  } else {
-    //Gli do una classname per mostrare il bottone rosso
-    btn.className = 'false';
-    //inoltre ciclo i bottoni per mostrare la risposta vera
-    domandeSbagliate.push[btn.innerText];
-    document.querySelectorAll('.answers form button').forEach(btn => {
-        if(btn.innerText== domande[c].correct_answer){
-            btn.className = 'correct';
+function scoreCheck(bottone) {
+  if (bottone.innerText == domande[c].correct_answer) {//controllo se il buttone quando cliccato corrisponde alla domanda giusta...
+    bottone.className= 'correct'; //Gli do una classname per mostrare il bottone verde
+    score+= 1; //Aumento lo score
+  } else { //se bottone cliccato è la risposta falsa...
+    bottone.className = 'false'; //Gli do una classname per mostrare il bottone rosso
+    document.querySelectorAll('.answers form button').forEach(button => { //inoltre ciclo i bottoni per mostrare la risposta vera
+        if(button.innerText== domande[c].correct_answer){
+            button.className = 'correct';
         }
     });
   }
 }
+console.log(score);
 
-
-let startTime = performance.now();
-let timeleft = 60;
 let circle = document.querySelector('.circle circle');
 let circumference = parseInt(circle.getAttribute('stroke-dasharray'));
 let timerElement = document.getElementById("timer");
 
-function updateTimer() {
+function updateTimer() { //timer- chiedi a cielo
     let currentTime = performance.now();
     let elapsedTime = (currentTime - startTime) / 1000; 
 
     let remainingTime = timeleft - elapsedTime;
-    if (remainingTime <= 0) {
+    if (remainingTime <= 0) { //Se il timer va a zero... 
         remainingTime = 0;
+        buttonpresscheck=0; //si disattivano i bottoni delle risposte tramite la variabile di controllo
+        createNextQuestionButton(); //chiamo la funzione per generare la next question button
+        document.querySelectorAll('.answers form button').forEach(bttn => { //mostro la risposta giusta intanto
+          if(bttn.innerText== domande[c].correct_answer){
+              bttn.className = 'correct';
+          }
+        });
+        c++; //Aumento il contatore delle domande 
     }
 
     let newProgress = 1 - (remainingTime / timeleft); 
@@ -311,11 +231,12 @@ function updateTimer() {
         circle.style.stroke = '#ff0000'; 
     }
 
-    timerElement.innerHTML = Math.floor(remainingTime); 
+    timerElement.innerText ='seconds ' + Math.floor(remainingTime) + ' remaining'; 
 
     if (remainingTime > 0) {
-        requestAnimationFrame(updateTimer);
+        statoAnimazione=requestAnimationFrame(updateTimer);
     }
+    return statoAnimazione;
 }
 
 
