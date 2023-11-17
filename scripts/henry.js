@@ -223,24 +223,27 @@ function nextpage() {
 
   //Ciclo i buttoni creati
   let i=1;
+  let tally;
   document.querySelectorAll('.answers form button').forEach(btn => {
     btn.addEventListener('click', () => {
-      if(i>0) {
+      if(i>0) { //controllo if per rendere cliccabile una sola volta i bottoni;
         i--;
         createNextQuestionButton();
-        score += scoreCheck(btn);
+        scoreCheck(btn);
+        //Aumento il contatore
         c++;
+        return tally;
       }
-      //Aumento il contatore
-      
-      return score;
+      return tally;
     });
-    return score;
+    return tally;
   })
-  return score;
+  return score+=tally;
 }
-nextpage();
+
 console.log(score);
+
+
 
 function createNextQuestionButton() {
   //Creo un nuovo bottone per andare alla domanda succesiva
@@ -259,7 +262,7 @@ function createNextQuestionButton() {
   nextQuestion.addEventListener('click',nextpage);
 }
 
-function scoreCheck(btn) {
+function scoreCheck(btn, tally) {
   //controllo se il buttone quando cliccato corrisponde alla domanda giusta...
   if (btn.innerText == domande[c].correct_answer) {
     //Gli do una classname per mostrare il bottone verde
@@ -267,7 +270,7 @@ function scoreCheck(btn) {
     //memorizzo la domanda 
     domandeCorette.push[btn.innerText];
     //Aumento lo score
-    return 1;
+    return tally +=1;
     //se bottone cliccato è falso...
   } else {
     //Gli do una classname per mostrare il bottone rosso
