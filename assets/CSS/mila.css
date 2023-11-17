@@ -1,5 +1,5 @@
 body{
-    background-image: url(/assets/img/bg.jpg);
+    background-image: url(/BuildWeek_1/assets/img/bg.jpg);
     background-size: cover;
 }
 
@@ -16,10 +16,10 @@ h1 {
 }
 main{
     text-align: center;
-    color: white;
     font-family: 'Outfit', sans-serif;
     font-size: 16px;
     padding: 0 25%;
+    color: white
 }
 main p {
     font-size: 24px;
