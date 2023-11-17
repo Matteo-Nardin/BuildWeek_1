@@ -100,6 +100,8 @@ const questions = [
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
 ];
+
+
 let startTime; //Dichiarazione variabile del tempo d'inizio del timer
 let timeleft =10; //Tempo rimanente quando inizia il timer
 let statoAnimazione; //in che stato si trova l'animazione del timer
@@ -121,7 +123,9 @@ for (i=0; i  <numDomande ; i++) {
 document.querySelector('.totale_pagina').innerText ='/ '+ domande.length; //Mostro il numero totale di domande
 
 function nextpage() { //main function che cicla le domande e risposte da mostrare all'utente
-
+  if (c === numDomande) {
+    console.log(score); // Log the final score after all questions are answered
+  }
   //cancelAnimationFrame(statoAnimazione); //resetto l'animazione del timer ogni nuova domanda;
   requestAnimationFrame(updateTimer); //avvio il timer ad ogni nuova domanda,
   startTime=performance.now(); //Inizializzo il timer con il tempo corrente ogni nuova domanda
@@ -162,11 +166,10 @@ function nextpage() { //main function che cicla le domande e risposte da mostrar
         buttonpresscheck=0;
         createNextQuestionButton();
         scoreCheck(btn); 
-        cancelAnimationFrame(statoAnimazione);
+        cancelAnimationFrame(statoAnimazione); //fermo il timer al click di una risposta
         c++; //Aumento il contatore
       }
     });
-    console.log(score);
   });
 }
 nextpage();
@@ -176,7 +179,7 @@ function createNextQuestionButton() {
   let nextQuestion = document.createElement('button'); //Creo un nuovo bottone per andare alla domanda succesiva
   if((c+1 == domande.length)) {  //faccio un controllo all'ultima domanda per andare alla pagina successiva
       nextQuestion.innerText='Go to results';
-      nextQuestion.addEventListener('click', () => window.location.href = "../cielo.html"); //codice per andare alla pagina dei risultati
+      nextQuestion.addEventListener('click', () => window.location.href= "cielo.html"); //codice per andare alla pagina dei risultati 
   }else {
       nextQuestion.innerText='Next Question';
   }
@@ -198,7 +201,6 @@ function scoreCheck(bottone) {
     });
   }
 }
-console.log(score);
 
 let circle = document.querySelector('.circle circle');
 let circumference = parseInt(circle.getAttribute('stroke-dasharray'));
@@ -231,7 +233,7 @@ function updateTimer() { //timer- chiedi a cielo
         circle.style.stroke = '#ff0000'; 
     }
 
-    timerElement.innerText ='seconds ' + Math.floor(remainingTime) + ' remaining'; 
+    timerElement.innerHTML ='<p>seconds</p>' + Math.floor(remainingTime) + '<p>remaining</p>'; 
 
     if (remainingTime > 0) {
         statoAnimazione=requestAnimationFrame(updateTimer);
