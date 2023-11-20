@@ -28,7 +28,7 @@ let procedi = () => {
             alert("Seleziona almeno una difficoltà per procedere...");
             evt.preventDefault();
         } */ else {
-            window.location.href = "../henry.html";
+            window.location.href = "./henry.html";
         }
     });
 

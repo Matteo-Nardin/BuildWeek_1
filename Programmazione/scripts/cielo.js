@@ -10,9 +10,6 @@
     const urlParams = new URLSearchParams(window.location.search);
     const cieloscore = urlParams.get('score');
 
-// Log the score to the console
-
-
     console.log(cieloscore);
     let corrette = (cieloscore * 100)/numDomande;    // percentuale di risposte corrette 
     let sbagliate = 100-corrette;    // percentuale di risposte sbagliate
