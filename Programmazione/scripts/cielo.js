@@ -4,10 +4,17 @@
 
 
 
-    score = 7;   // numero risposte corrette
-    numDomande = 20;   // numero domande totale
+    //score = 7;   // numero risposte corrette
+    //numDomande = 20;   // numero domande totale
+    // Results page script
+    const urlParams = new URLSearchParams(window.location.search);
+    const cieloscore = urlParams.get('score');
 
-    let corrette = (score * 100)/numDomande;    // percentuale di risposte corrette 
+// Log the score to the console
+
+
+    console.log(cieloscore);
+    let corrette = (cieloscore * 100)/numDomande;    // percentuale di risposte corrette 
     let sbagliate = 100-corrette;    // percentuale di risposte sbagliate
 
 

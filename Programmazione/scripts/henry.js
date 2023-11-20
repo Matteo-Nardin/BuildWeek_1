@@ -111,9 +111,9 @@ let difficoltaScelta = 'easy'; // impostato da solo ma poi deve essere chiesto d
 let score = 0; //tiene conto del punteggio
 let buttonpresscheck; //variabile per controllare che i bottoni risposte vengono premuti tanto quanto neccesario
 
-for (i=0; i  <numDomande ; i++) {
-  domande.push(questions[i]); //raccolgo subito gli oggetti nell'array domande, le domande che hanno la difficolta scelta dall'utente
-}
+
+domande= questions.filter(obj => obj.difficulty ==difficoltaScelta).slice(0, numDomande); //raccolgo subito gli oggetti nell'array domande, n domande scelta dall'utente che hanno la difficolta scelta dall'utente
+
 
 document.querySelector('.totale_pagina').innerText ='/ '+ domande.length; //Mostro il numero totale di domande
 
@@ -123,8 +123,7 @@ function nextpage() { //main function che cicla le domande e risposte da mostrar
   requestAnimationFrame(updateTimer); //avvio il timer ad ogni nuova domanda,
   startTime=performance.now(); //Inizializzo il timer con il tempo corrente ogni nuova domanda
   buttonpresscheck=1; // Inizializzo la variabile di controllo ogni nuova domanda
-  
-
+ 
   //mostro la nuova domanda e aggiorno il numero della domanda
   document.querySelector('h1').innerText = domande[c].question;
   document.querySelector('.numero_pagina').innerText = c+1;
@@ -133,7 +132,7 @@ function nextpage() { //main function che cicla le domande e risposte da mostrar
   document.querySelectorAll('.answers form button').forEach( btn => btn.remove());
 
   //creo nuovi buttoni in base al numeri di risposte presenti
-  let numAnswers = domande[c].incorrect_answers.length+ domande[c].correct_answer.length;
+  let numAnswers = domande[c].incorrect_answers.length + domande[c].correct_answer.length;
   for (let i = 0; i < numAnswers; i++) {
       let bottone = document.createElement('button');
       bottone.type = 'button';
@@ -157,54 +156,45 @@ function nextpage() { //main function che cicla le domande e risposte da mostrar
     btn.addEventListener('click', () => {
       if(buttonpresscheck===1) { //controllo if per rendere cliccabile una sola volta i bottoni;
         buttonpresscheck=0;
-        createNextQuestionButton();
-        scoreCheck(btn); 
+        scoreCheck(btn);
+        createProceedButton();
         cancelAnimationFrame(statoAnimazione);
         c++; //Aumento il contatore
       }
     });
-    console.log(score);
   });
 }
 nextpage();
 
 
-function createNextQuestionButton() {
-  let nextQuestion = document.createElement('button'); //Creo un nuovo bottone per andare alla domanda succesiva
-  nextQuestion.type = "button";
-
+function createProceedButton() {
+  let button = document.createElement('button'); //Creo un nuovo bottone per andare alla domanda succesiva
+  button.type = "button";
   if((c+1 == domande.length)) {  //faccio un controllo all'ultima domanda per andare alla pagina successiva
- 
-      nextQuestion.innerText='Go to results';
-      
-      nextQuestion.addEventListener('click', ()=> {location.href = "./cielo.html"});
-  
+    button.innerText='Go to results';
+    button.addEventListener('click', () => location.href = "./cielo.html?score=" + score);
   }else {
-      nextQuestion.innerText='Next Question';
-
-      nextQuestion.className ='nextQuestion';
-      nextQuestion.addEventListener('click',nextpage);
-      
+    button.innerText='Next Question'; 
+    button.addEventListener('click',nextpage);
   }
-      document.querySelector('form').appendChild(nextQuestion); //Appendo bottone
-  
-    
+  button.className ='nextQuestion';
+  document.querySelector('form').appendChild(button); //Appendo bottone
 }
 
 function scoreCheck(bottone) {
-  if (bottone.innerText == domande[c].correct_answer) {//controllo se il buttone quando cliccato corrisponde alla domanda giusta...
+  if (domande[c].correct_answer.includes(bottone.innerText)) {//controllo se il buttone, quando cliccato, corrisponde alla domanda giusta...
     bottone.className= 'correct'; //Gli do una classname per mostrare il bottone verde
-    score+= 1; //Aumento lo score
+    score += 1; //Aumento lo score
   } else { //se bottone cliccato è la risposta falsa...
     bottone.className = 'false'; //Gli do una classname per mostrare il bottone rosso
     document.querySelectorAll('.answers form button').forEach(button => { //inoltre ciclo i bottoni per mostrare la risposta vera
-        if(button.innerText== domande[c].correct_answer){
-            button.className = 'correct';
-        }
+      if(domande[c].correct_answer.includes(button.innerText)){
+        button.className = 'correct';
+      }
     });
   }
 }
-console.log(score);
+
 
 let circle = document.querySelector('.circle circle');
 let circumference = parseInt(circle.getAttribute('stroke-dasharray'));
@@ -218,7 +208,7 @@ function updateTimer() { //timer- chiedi a cielo
     if (remainingTime <= 0) { //Se il timer va a zero... 
         remainingTime = 0;
         buttonpresscheck=0; //si disattivano i bottoni delle risposte tramite la variabile di controllo
-        createNextQuestionButton(); //chiamo la funzione per generare la next question button
+        createProceedButton(); //chiamo la funzione per generare la next question button
         document.querySelectorAll('.answers form button').forEach(bttn => { //mostro la risposta giusta intanto
           if(bttn.innerText== domande[c].correct_answer){
               bttn.className = 'correct';

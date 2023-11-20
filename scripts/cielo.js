@@ -4,8 +4,8 @@
 
 
 
-     score = 17;   // numero risposte corrette
-    numDomande = 20;   // numero domande totale
+     //score = 17;   // numero risposte corrette
+    //numDomande = 20;   // numero domande totale
 
     let corrette = (score * 100)/numDomande;    // percentuale di risposte corrette 
     let sbagliate = 100-corrette;    // percentuale di risposte sbagliate
