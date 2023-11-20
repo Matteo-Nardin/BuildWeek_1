@@ -103,57 +103,47 @@ let questionNumber = 0; // indice domanda questionNumber>question.length
 let bt = document.querySelector(".btn");
 let asBox= document.querySelector("#answerBox");
 
-//appena carico la pagina
-let quest = document.querySelector(".domanda");
-quest.innerText = questions[questionNumber].question;
+bt.addEventListener("click", function() {
+        // in questo if richiamo "automaticamente" il cambio di pagina una volta cliccata l'ultimo bottone
+        if(questionNumber === questions.length -1){
+            console.log("son dentro")
+            bt.addEventListener("click", function() {location.href = "../cielo.html"
+            });
+        }
 
-TypeOfAnswer(questionNumber);
-
-let btn = document.querySelectorAll("button");
-for (let i = 0; i < btn.length; i++) {
-  btn[i].addEventListener("click",next);
-  btn[i].addEventListener("click",myFunction);
-}
-
-
-questionNumber++ // faccio partire da 1
-
-
-console.log(btn[1].innerText)
-
-// let handler = () => 
-
-
-function next() {
         // rimuove i bottoni
         let rBtn = document.querySelectorAll("#answerBox > button");
         // console.log(rBtn);
-        for(let i = 0; i<rBtn.length; i++){
+        for(let i =0; i<rBtn.length; i++){
           rBtn[i].remove()
         }
+       
+        let quest = document.querySelector(".domanda");
+        console.log(quest);
+        console.log(questionNumber);
 
-        // genero la domanda
         quest.innerText = questions[questionNumber].question;
-        // genero i bottoni con il testo corretto
+
+        //qua ci potrebbe andare il "generatore di bottoni" ??? ok funziona ma....devo cancellare i bottoni creati
         TypeOfAnswer(questionNumber);
-        //seleziono i bottoni creati e attacco la funzione stessa in modo che vada all'infinito
-        let btn = document.querySelectorAll("button");
-        for (let i = 0; i < btn.length; i++) {
-          btn[i].addEventListener("click",next);
-          btn[i].addEventListener("click",myFunction);
-        }
-        console.log(btn)
 
         questionNumber++;
-        // in questo if richiamo "automaticamente" il cambio di pagina una volta cliccata l'ultimo bottone
-        if(questionNumber === questions.length ){
-          for (let i = 0; i < btn.length; i++) {
-            btn[i].addEventListener("click", ()=> {location.href = "../cielo.html"});
-          }
-        }
-        //aggiungere il riconoscimento vero o falso
-}
+})
 
+let btn = document.querySelectorAll("button");
+for (let i = 0; i < btn.length; i++) {
+  btn[i].style.backgroundColor = "red";
+}
+console.log(btn)
+// while dentro ad un listener?
+// let i = 0;
+// while(i < questions.length){
+//     // inserire testo
+//     let quest = document.querySelector(".domanda");
+//     console.log(quest);
+//     quest.innerText = questions[i].question;
+//     i++;
+// }
 //----------------------------------------PIERPAOLO--------------------------------------------------------
 
 function TypeOfAnswer(n){
@@ -170,6 +160,8 @@ function TypeOfAnswer(n){
     // arr da usare per riempire il contenuto dei bottoni
     //--------------------------------------------
     if(questions[n].type === "multiple"){
+       
+        // createButton(4);
 
         for(let c=0; c<arr.length; c++){
           let x = document.createElement ("button");
@@ -184,18 +176,11 @@ function TypeOfAnswer(n){
         }
     } 
   // }
+  
 }
 
-function myFunction(e) { 
-  let text = e.target.innerText;
-  console.log(text);
+//TypeOfAnswer()
 
-  if(text === questions[questionNumber].correct_answer){ //2
-    score += 1;
-    console.log(score);
-  }
-
-}
 //Per creare i bottoni
 function createButton(n){
   for(let i=0; i<n; i++){

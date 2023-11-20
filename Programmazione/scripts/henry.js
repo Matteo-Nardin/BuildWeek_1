@@ -1,6 +1,3 @@
-
-
-
 const questions = [
   {
     category: "Science: Computers",
@@ -19,7 +16,7 @@ const questions = [
     type: "multiple",
     difficulty: "easy",
     question:
-      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn't get modified?",
     correct_answer: ["Final"],
     incorrect_answers: ["Static", "Private", "Public"],
   },
@@ -174,15 +171,24 @@ nextpage();
 
 function createNextQuestionButton() {
   let nextQuestion = document.createElement('button'); //Creo un nuovo bottone per andare alla domanda succesiva
+  nextQuestion.type = "button";
+
   if((c+1 == domande.length)) {  //faccio un controllo all'ultima domanda per andare alla pagina successiva
+ 
       nextQuestion.innerText='Go to results';
-      nextQuestion.addEventListener('click', () => window.location.href = "../cielo.html"); //codice per andare alla pagina dei risultati
+      
+      nextQuestion.addEventListener('click', ()=> {location.href = "./cielo.html"});
+  
   }else {
       nextQuestion.innerText='Next Question';
+
+      nextQuestion.className ='nextQuestion';
+      nextQuestion.addEventListener('click',nextpage);
+      
   }
-    nextQuestion.className ='nextQuestion';
-    nextQuestion.addEventListener('click',nextpage);
-    document.querySelector('form').appendChild(nextQuestion); //Appendo bottone
+      document.querySelector('form').appendChild(nextQuestion); //Appendo bottone
+  
+    
 }
 
 function scoreCheck(bottone) {

@@ -19,33 +19,24 @@ body {
 .logo img {
     width: 100%;
 }
-
-.yo{
-    display: inline-block;
-    margin: 5vh 0 0 65%;
-    border: 1px dashed white;
-     
-    
-}
-.content_circle {
-     
-    border: 30px solid #00ffff;
-    width: 220px;
+.circle-container {
+    position: relative;
+    width: 200px;
     height: 200px;
-    padding-top: 20px;
-    text-align: center;
-    border-radius: 50%;
-    
 }
-
-.content_circle h2 {
-    font-size: 7em;
-    font-family: 'Outfit', sans-serif;
+.circle {
+    fill: none;
+    stroke: #00ffff;
+    stroke-width: 20;
+    stroke-linecap: round;
+    display: inline-block;
 }
-
-.content_circle p {
-    font-size: 1.1em;
-    text-transform: uppercase;
+.timer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.4em;
 }
 
 .question_area {
@@ -93,11 +84,11 @@ form button:hover {
     color: #93137f;
 }
 
-.correct {
+.correct, .correct:hover {
     background-color: green;
 }
 
-.false {
+.false, .false:hover {
     background-color: red;
 }
 

@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Outfit&display=swap');
+
+/* Impostazioni generali */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0 auto;
+    user-select: none;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+}
+
+.bianco {
+    color: white;
+}
+
+.display {
+    display: inline-block;
+}
+
+/* Header */
+
+img {
+    width: 80%; 
+    max-width: 17em;
+    padding: 3em;
+    margin: 2em 4em;
+}
+
+
+/* Main */
+
+main {
+    padding: 1em;
+    margin: 2em 6em;
+}
+
+h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 4em;
+    line-height: 0.8em;
+}
+
+h1 div {
+    font-weight: bold;
+}
+
+#h2istruzioni {
+    color: #c2128d;
+    font-weight: bold;
+    font-size: 1.8em;
+    padding-top: 1.8em;
+}
+
+p {
+    font-size: 1em;
+    padding-top: 1em;
+}
+
+main ul {
+    padding: 2em;
+    line-height: 1.4em;
+}
+
+#is {
+    width: 75%;
+}
+
+b {
+    font-weight: bold;
+}
+
+#istruzioni input {
+    width: 1.5em;
+    height: 1.5em;
+    background: transparent;
+    border: 0.15em solid white;
+}
+
+#btnPr {
+    float: right;
+    margin-bottom: 1em;
+    font-size: 1.3em;
+    padding: 0.7em 2em 0.7em 2em;
+    color: #0b113b;
+    font-weight: bold;
+    background-color: #00ffff;
+}
+
+
+
+
+
+
+/* MAIN */
+
+main{
+    height: 100%;
+}
+h2{
+    font-family: 'Outfit', sans-serif;
+
+}
+p{
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    color: white;
+}
+
+
+/* SECTION */
+section{
+    text-align: center;
+    margin: 2em;
+}
+
+#results{
+    text-align: center;
+}
+#results h1{
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 3em;
+    margin-bottom: 0.2em;
+}
+#results p{
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5em;
+}
+
+
+/* PERCENTUALI corrette e sbagliate*/
+#correct{
+    display: inline-block;
+    text-align: left;
+    margin: 3em;
+    height: 100%;
+}
+#wrong{
+    display: inline-block;
+    text-align: right;
+    margin: 3em;
+
+}
+h2{
+    font-size: 3em;
+}
+.percent{
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 3em;
+}
+.questions{
+    font-family: 'Outfit', sans-serif;
+}
+
+
+
+
+/* GRAFICO CON PERCENTUALI*/
+
+/* Contenitore generale */
+#circle-container{
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-align: center;
+    padding: auto;
+}
+/* Grafico */
+#myChart{
+    height: 20em;    
+
+}
+/* Testo interno */
+#prova{
+    margin: auto;
+    width: 14em;
+    height: 14em;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 3em;
+    margin-top: 3.3em;
+    
+} 
+#prova div{
+    margin-top: 3em;
+    line-height: 1.3;
+}
+#prova div p{
+    
+    font-weight: 600;
+}
+#prova > p{
+    line-height: 1.3;
+    margin-top: 2em;
+    font-size: 0.8em;
+}
+
+
+/* Bottone valutazione */
+
+#rateUS{
+    text-align: center;
+    margin-bottom: 5em;
+}
+#rateUS button{
+    font-size: 1.5em;
+    font-weight: 600;
+    background-color: #00ffff00;
+    border: 2px solid #ffffff;
+    color: white;
+    padding: 0.8em 3em;
+    cursor: pointer;
+}
+
+#rateUS button:hover{
+    background-color: rgba(0, 0, 0, 0.248);
+    color: rgb(212, 212, 212);
+}
+
