@@ -108,7 +108,7 @@ const wrong = () => {
 const btn = ()=>{
     let btn = document.querySelector('#rateUS button')
     btn.addEventListener('click', ()=>{
-        window.location.href = "../mila.html";
+        window.location.href = "./mila.html";
     })
 }
 
